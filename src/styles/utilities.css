@@ -1,0 +1,216 @@
+/* background image */
+@utility bg-bg_ai {
+  background-image: linear-gradient(90deg, #C369DA 0%, #341A9C 100%);
+}
+
+/* custom widths / heights */
+@utility outline-1\.5 {
+  outline-width: 1.5px;
+}
+
+@utility border-1\.5 {
+  border-width: 1.5px;
+}
+
+@utility h-1\.5 {
+  height: 1.5px;
+}
+
+@utility h-tabBottomHeight {
+  height: var(--spacing-tabBottomHeight);
+}
+
+/* 기존 translate.tabBottomHeight = -2px */
+@utility -translate-y-tabBottomHeight {
+  translate: 0 -2px;
+}
+
+/* ===== typography preset ===== */
+
+@utility typo-display1 {
+  font-size: var(--text-26px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-48px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-display2 {
+  font-size: var(--text-34px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-40px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-heading1 {
+  font-size: var(--text-34px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-40px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-heading2 {
+  font-size: var(--text-27px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-32px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-title1 {
+  font-size: var(--text-20px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-24px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-title2 {
+  font-size: var(--text-18px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-19px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-title3 {
+  font-size: var(--text-16px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-17px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body1_normal {
+  font-size: var(--text-20px);
+  font-weight: var(--font-weight-300);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-24px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body2_strong {
+  font-size: var(--text-17px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-19px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body2_normal {
+  font-size: var(--text-17px);
+  font-weight: var(--font-weight-300);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-19px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body3_strong {
+  font-size: var(--text-16px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-17px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body3_normal {
+  font-size: var(--text-16px);
+  font-weight: var(--font-weight-300);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-17px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body4_strong {
+  font-size: var(--text-15px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-15px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body4_normal {
+  font-size: var(--text-15px);
+  font-weight: var(--font-weight-300);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-15px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-body4_under {
+  font-size: var(--text-15px);
+  font-weight: var(--font-weight-300);
+  line-height: var(--leading-140);
+  text-decoration-line: underline;
+
+  @variant sm {
+    font-size: var(--text-15px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-detail1_normal {
+  font-size: var(--text-12px);
+  font-weight: var(--font-weight-300);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-13px);
+    line-height: var(--leading-150);
+  }
+}
+
+@utility typo-detail1_strong {
+  font-size: var(--text-12px);
+  font-weight: var(--font-weight-500);
+  line-height: var(--leading-140);
+
+  @variant sm {
+    font-size: var(--text-13px);
+    line-height: var(--leading-150);
+  }
+}

@@ -1,0 +1,110 @@
+@theme {
+  /* breakpoint */
+  --breakpoint-sm: 47.5rem;   /* 760px */
+  --breakpoint-md: 62.5rem;   /* 1000px */
+  --breakpoint-xl: 80rem;     /* 1280px */
+
+  /* colors - primary */
+  --color-primary-primary_5: #E3F2FC;
+  --color-primary-primary_10: #BADFFA;
+  --color-primary-primary_20: #8ECBF8;
+  --color-primary-primary_30: #61B6F4;
+  --color-primary-primary_40: #3CA6F3;
+  --color-primary-primary_50: #0798F2;
+  --color-primary-primary_60: #008AE4;
+  --color-primary-primary_70: #0078D1;
+  --color-primary-primary_80: #0167C0;
+  --color-primary-primary_90: #0049A1;
+
+  /* colors - gray */
+  --color-gray-gray_0: #FFFFFF;
+  --color-gray-gray_5: #FAFAFA;
+  --color-gray-gray_10: #F5F5F5;
+  --color-gray-gray_20: #EEEEEE;
+  --color-gray-gray_30: #E0E0E0;
+  --color-gray-gray_40: #BDBDBD;
+  --color-gray-gray_50: #9E9E9E;
+  --color-gray-gray_60: #757575;
+  --color-gray-gray_70: #616161;
+  --color-gray-gray_80: #424242;
+  --color-gray-gray_90: #212121;
+  --color-gray-gray_100: #000000;
+
+  /* colors - button */
+  --color-button-disabled: #EEEEEE;
+  --color-button-primary: #0798F2;
+  --color-button-primary_hover: #008AE4;
+  --color-button-primary_clicked: #0078D1;
+  --color-button-secondary: #FFFFFF;
+  --color-button-secondary_hover: #E3F2FC;
+  --color-button-secondary_clicked: #BADFFA;
+  --color-button-tertiary: #FFFFFF;
+  --color-button-tertiary_hover: #F5F5F5;
+  --color-button-tertiary_clicked: #EEEEEE;
+  --color-button-text_hover: #E3F2FC;
+  --color-button-text_clicked: #BADFFA;
+
+  /* colors - status */
+  --color-status-error_5: #FFE9EC;
+  --color-status-error_10: #FFCACD;
+  --color-status-error_50: #EC1D1D;
+  --color-status-success_5: #E8F4E9;
+  --color-status-success_10: #C7E5C9;
+  --color-status-success_70: #3A8B3E;
+  --color-status-notice_5: #FFF8E1;
+  --color-status-notice_10: #FFECB3;
+  --color-status-notice_70: #FFB300;
+  --color-status-notice_text: #996000;
+
+  /* colors - background / overlay */
+  --color-background-bg_5: #F4F7FE;
+  --color-modalBg: rgb(0 0 0 / 0.5);
+
+  /* font family */
+  --font-pretendard: "Pretendard", sans-serif;
+
+  /* font size */
+  --text-12px: 0.75rem;
+  --text-13px: 0.8125rem;
+  --text-15px: 0.9375rem;
+  --text-16px: 1rem;
+  --text-17px: 1.0625rem;
+  --text-18px: 1.125rem;
+  --text-19px: 1.1875rem;
+  --text-20px: 1.25rem;
+  --text-24px: 1.5rem;
+  --text-26px: 1.625rem;
+  --text-27px: 1.6875rem;
+  --text-32px: 2rem;
+  --text-34px: 2.125rem;
+  --text-40px: 2.5rem;
+  --text-48px: 3rem;
+
+  /* font weight */
+  --font-weight-300: 300;
+  --font-weight-500: 500;
+
+  /* line height */
+  --leading-140: 140%;
+  --leading-150: 150%;
+
+  /* spacing / sizing */
+  --spacing-4px: 4px;
+  --spacing-6px: 6px;
+  --spacing-8px: 8px;
+  --spacing-12px: 12px;
+  --spacing-16px: 16px;
+  --spacing-20px: 20px;
+  --spacing-24px: 24px;
+  --spacing-32px: 32px;
+  --spacing-tabBottomHeight: 3px;
+
+  /* radius */
+  --radius-6: 6px;
+  --radius-8: 8px;
+
+  /* shadow */
+  --shadow-dropdownShadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.08);
+  --shadow-inputShadow: 0 0 0 0.5px #0798F2 inset;
+  --shadow-inputErrorShadow: 0 0 0 0.5px #EC1D1D inset;
+}
