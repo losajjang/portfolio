@@ -1,6 +1,6 @@
 /* background image */
 @utility bg-bg_ai {
-  background-image: linear-gradient(90deg, #C369DA 0%, #341A9C 100%);
+  background-image: linear-gradient(90deg, #c369da 0%, #341a9c 100%);
 }
 
 /* custom widths / heights */
@@ -213,4 +213,19 @@
     font-size: var(--text-13px);
     line-height: var(--leading-150);
   }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@utility animate-blink {
+  animation: blink 1s step-end infinite;
 }
