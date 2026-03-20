@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import localFont from "next/font/local";
+import clsx from "clsx";
 
 const pretendard = localFont({
   src: "../../public/fonts/PretendardVariable.woff2",
@@ -21,7 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
-      <body className={pretendard.className}>{children}</body>
+      <body className={pretendard.className}>
+        <section className={clsx("min-h-screen")}>{children}</section>
+      </body>
     </html>
   );
 }
