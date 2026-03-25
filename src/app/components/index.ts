@@ -5,6 +5,7 @@ import Intro from "./Intro";
 import Links from "./Links";
 import IntroItem from "./IntroItem";
 import SectionWrapper from "./SectionWrapper";
+import AbilityCategory from "./AbilityCategory";
 
 export {
   Abilities,
@@ -14,4 +15,5 @@ export {
   Career,
   IntroItem,
   SectionWrapper,
+  AbilityCategory,
 };

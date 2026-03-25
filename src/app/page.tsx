@@ -76,7 +76,7 @@ export default function Home() {
       <div
         className={clsx(
           "transition-all duration-500 ease-in-out",
-          showContent ? "flex flex-col gap-8 w-full h-full" : "hidden",
+          showContent ? "flex flex-col gap-12 w-full h-full" : "hidden",
         )}
       >
         <article>
