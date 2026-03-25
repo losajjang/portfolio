@@ -44,7 +44,7 @@ export default function Home() {
     <section
       className={clsx(
         "relative",
-        "w-full h-full pt-4",
+        "w-full h-screen pt-4",
         isHelloTextTypingComplete ? "flex-row" : "flex-col",
       )}
     >
@@ -85,6 +85,9 @@ export default function Home() {
           <Career />
           <Education />
           <Links />
+          <div className="w-full h-100 mb-100">
+            읽어주셔서 정말 감사드립니다.
+          </div>
         </div>
       </div>
     </section>
