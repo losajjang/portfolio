@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="kr" className={`${pretendard.variable}`}>
       <body className={pretendard.className}>
-        <section className={clsx("min-h-screen")}>{children}</section>
+        <section className={clsx("h-screen")}>{children}</section>
       </body>
     </html>
   );
