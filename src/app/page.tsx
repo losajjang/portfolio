@@ -44,14 +44,14 @@ export default function Home() {
     <section
       className={clsx(
         "relative",
-        "w-full h-full pl-80 pr-20 pt-4",
+        "w-full h-full pt-4",
         isHelloTextTypingComplete ? "flex-row" : "flex-col",
       )}
     >
       <div
         className={clsx(
           "flex items-center justify-center",
-          isHelloTextTypingComplete ? "w-fit" : "w-full",
+          isHelloTextTypingComplete ? "w-fit shrink-0" : "w-full",
         )}
       >
         <h1
@@ -76,24 +76,16 @@ export default function Home() {
       <div
         className={clsx(
           "transition-all duration-500 ease-in-out",
-          showContent ? "flex flex-col gap-12 w-full h-full" : "hidden",
+          showContent ? "flex w-full h-full" : "hidden",
         )}
       >
-        <article>
+        <div className={clsx("flex flex-col gap-12 mx-auto px-80")}>
           <Intro />
-        </article>
-        <article>
           <Abilities />
-        </article>
-        <article>
           <Career />
-        </article>
-        <article>
           <Education />
-        </article>
-        <article>
           <Links />
-        </article>
+        </div>
       </div>
     </section>
   );
