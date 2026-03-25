@@ -4,5 +4,14 @@ import Education from "./Education";
 import Intro from "./Intro";
 import Links from "./Links";
 import IntroItem from "./IntroItem";
+import SectionWrapper from "./SectionWrapper";
 
-export { Abilities, Education, Intro, Links, Career, IntroItem };
+export {
+  Abilities,
+  Education,
+  Intro,
+  Links,
+  Career,
+  IntroItem,
+  SectionWrapper,
+};

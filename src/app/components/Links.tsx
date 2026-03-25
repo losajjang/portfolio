@@ -1,8 +1,22 @@
+import { useRef } from "react";
+import SectionWrapper from "./SectionWrapper";
+import useInViewportOffset from "@/utils/hooks/useInViewportOffset";
 
 const Links = () => {
-  return (
-    <div>Links</div>
-  )
-}
+  const linksTitleRef = useRef<HTMLElement | null>(null);
 
-export default Links
+  const { isReached: isLinksTitleReached } = useInViewportOffset({
+    ref: linksTitleRef,
+    bottomOffset: 100,
+  });
+
+  return (
+    <SectionWrapper
+      ref={linksTitleRef}
+      title="링크"
+      isTitleReached={isLinksTitleReached}
+    ></SectionWrapper>
+  );
+};
+
+export default Links;

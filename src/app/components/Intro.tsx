@@ -11,9 +11,10 @@ import {
 import clsx from "clsx";
 import { useRef } from "react";
 import IntroItem from "./IntroItem";
+import SectionWrapper from "./SectionWrapper";
 
 const Intro = () => {
-  const introTitleRef = useRef<HTMLElement>(null);
+  const introTitleRef = useRef<HTMLElement | null>(null);
 
   const { isReached: isIntroTitleReached } = useInViewportOffset({
     ref: introTitleRef,
@@ -21,14 +22,14 @@ const Intro = () => {
   });
 
   return (
-    <section
+    <SectionWrapper
       ref={introTitleRef}
-      className={clsx(
-        isIntroTitleReached ? "animate-fadeInUp" : "opacity-0",
-        "transition-opacity duration-1000",
-      )}
+      title="핵심 역량"
+      isTitleReached={isIntroTitleReached}
     >
-      <div className={clsx("flex flex-col gap-4", "typo-title1 text-gray-gray_80")}>
+      <div
+        className={clsx("flex flex-col gap-4", "typo-title1 text-gray-gray_80")}
+      >
         <h2>
           사용자 입력 흐름이 복잡한 서비스에서
           <br />
@@ -58,7 +59,7 @@ const Intro = () => {
           />
         </div>
       </div>
-    </section>
+    </SectionWrapper>
   );
 };
 
