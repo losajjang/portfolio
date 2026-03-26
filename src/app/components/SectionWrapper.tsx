@@ -27,6 +27,7 @@ const SectionWrapper = ({
         {title}
       </p>
       {children}
+      <hr className="border-gray-gray_50"/>
     </section>
   );
 };
