@@ -1,6 +1,6 @@
 "use client";
 import clsx from "clsx";
-import { Abilities, Career, Education, Intro, Links } from "./components";
+import { Abilities, Career, Education, FloatingContact, Intro } from "./components";
 import { useEffect, useState } from "react";
 import useTypingText from "@/utils/hooks/useTypingText";
 
@@ -84,12 +84,18 @@ export default function Home() {
           <Abilities />
           <Career />
           <Education />
-          <Links />
           <div className="w-full h-100 mb-100">
-            읽어주셔서 정말 감사드립니다.
+            <p className={clsx("typo-body2_strong text-primary-primary_80")}>
+              읽어주셔서 정말 감사드립니다.
+            </p>
+            <p className="text-gray-gray_0">-------------</p>
+            <p className="text-gray-gray_0">-------------</p>
+            <p className="text-gray-gray_0">-------------</p>
+            <p className="text-gray-gray_0">-------------</p>
           </div>
         </div>
       </div>
+      {showContent && <FloatingContact />}
     </section>
   );
 }
