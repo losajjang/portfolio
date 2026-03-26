@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import SectionWrapper from "./SectionWrapper";
 import useInViewportOffset from "@/utils/hooks/useInViewportOffset";
-import clsx from "clsx";
 import EducationItem from "./EducationItem";
 
 const Education = () => {
@@ -29,7 +28,6 @@ const Education = () => {
       <EducationItem
         title="경기과학기술대학교 컴퓨터응용금형디자인"
         period="2004.03 ~ 2009.02 | 졸업"
-        
       />
     </SectionWrapper>
   );
