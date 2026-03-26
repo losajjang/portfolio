@@ -1,11 +1,11 @@
 import clsx from "clsx";
 
-type AbilityCategoryProps = {
+type AbilityItemProps = {
   title: string;
   abilities: { name: string; color: string }[];
 };
 
-const AbilityCategory = ({ title, abilities }: AbilityCategoryProps) => {
+const AbilityItem = ({ title, abilities }: AbilityItemProps) => {
   return (
     <div className={clsx("grid grid-cols-[100px_1fr] gap-8 items-center")}>
       <h3 className={clsx("typo-body3_strong text-gray-gray_80")}>⎮ {title}</h3>
@@ -34,4 +34,4 @@ const AbilityCategory = ({ title, abilities }: AbilityCategoryProps) => {
   );
 };
 
-export default AbilityCategory;
+export default AbilityItem;

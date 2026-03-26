@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import SectionWrapper from "./SectionWrapper";
 import useInViewportOffset from "@/utils/hooks/useInViewportOffset";
-import AbilityCategory from "./AbilityCategory";
+import AbilityItem from "./AbilityItem";
 
 const FRONTEND_ABILITIES = [
   { name: "JavaScript", color: "#f7df1e" },
@@ -44,10 +44,10 @@ const Abilities = () => {
       title="기술 스택"
       isTitleReached={isAbilitiesTitleReached}
     >
-      <AbilityCategory title="프론트엔드" abilities={FRONTEND_ABILITIES} />
-      <AbilityCategory title="라이브러리" abilities={LIBRARY_ABILITIES} />
-      <AbilityCategory title="배포/운영" abilities={DEPLOYMENT_ABILITIES} />
-      <AbilityCategory title="협업" abilities={COLLABORATION_ABILITIES} />
+      <AbilityItem title="프론트엔드" abilities={FRONTEND_ABILITIES} />
+      <AbilityItem title="라이브러리" abilities={LIBRARY_ABILITIES} />
+      <AbilityItem title="배포/운영" abilities={DEPLOYMENT_ABILITIES} />
+      <AbilityItem title="협업" abilities={COLLABORATION_ABILITIES} />
     </SectionWrapper>
   );
 };
