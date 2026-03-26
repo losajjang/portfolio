@@ -8,7 +8,7 @@ type AbilityCategoryProps = {
 const AbilityCategory = ({ title, abilities }: AbilityCategoryProps) => {
   return (
     <div className={clsx("grid grid-cols-[100px_1fr] gap-8 items-center")}>
-      <h3 className={clsx("typo-body3_strong text-gray-gray_80")}>{title}</h3>
+      <h3 className={clsx("typo-body3_strong text-gray-gray_80")}>⎮ {title}</h3>
       <ul className="flex flex-row gap-2">
         {abilities.map((ability, index) => (
           <li

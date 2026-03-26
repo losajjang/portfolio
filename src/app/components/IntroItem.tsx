@@ -33,7 +33,7 @@ const IntroItem = ({
         ))}
       </div>
       <div className={clsx("flex flex-col gap-1")}>
-        <h3 className={clsx("typo-title1 text-gray-gray_80")}>{title}</h3>
+        <h3 className={clsx("typo-title1 text-gray-gray_80")}>⎮ {title}</h3>
         <p
           className={clsx(
             "typo-body4_normal break-keep whitespace-break-spaces text-gray-gray_70",
