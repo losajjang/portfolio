@@ -1,5 +1,5 @@
 import Abilities from "./Abilities";
-import Career from "./Careers";
+import Career from "./Career";
 import Education from "./Education";
 import Intro from "./Intro";
 import IntroItem from "./IntroItem";
@@ -10,6 +10,7 @@ import CareerItem from "./CareerItem";
 import CareerExpandDetail from "./CareerExpandDetail";
 import ProjectDetail from "./ProjectDetail";
 import FloatingContact from "./FloatingContact";
+import Nav from "./Nav";
 
 export {
   Abilities,
@@ -24,4 +25,5 @@ export {
   CareerExpandDetail,
   ProjectDetail,
   FloatingContact,
+  Nav,
 };
