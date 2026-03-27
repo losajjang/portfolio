@@ -40,6 +40,7 @@ const Abilities = () => {
 
   return (
     <SectionWrapper
+      id="abilities"
       ref={abilitiesTitleRef}
       title="기술 스택"
       isTitleReached={isAbilitiesTitleReached}

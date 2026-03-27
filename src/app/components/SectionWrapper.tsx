@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { ReactNode, RefObject } from "react";
 
 type SectionWrapperProps = {
+  id: string; // 섹션의 고유 ID
   ref?: RefObject<HTMLElement | null>; // 섹션의 ref
   title?: string | ReactNode; // 섹션 제목
   children?: string | ReactNode; // 섹션 내용
@@ -9,6 +10,7 @@ type SectionWrapperProps = {
 };
 
 const SectionWrapper = ({
+  id,
   ref = { current: null },
   title = "",
   children = null,
@@ -16,18 +18,19 @@ const SectionWrapper = ({
 }: SectionWrapperProps) => {
   return (
     <section
+      id={id}
       ref={ref}
       className={clsx(
         isTitleReached ? "animate-fadeInUp" : "opacity-0",
         "transition-opacity duration-1000",
-        "flex flex-col gap-4",
+        "flex flex-col gap-4 scroll-mt-8",
       )}
     >
       <p className={clsx("typo-body2_strong text-primary-primary_50")}>
         {title}
       </p>
       {children}
-      <hr className="border-gray-gray_50"/>
+      <hr className="border-gray-gray_50" />
     </section>
   );
 };

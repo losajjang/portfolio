@@ -1,6 +1,13 @@
 "use client";
 import clsx from "clsx";
-import { Abilities, Career, Education, FloatingContact, Intro } from "./components";
+import {
+  Abilities,
+  Career,
+  Education,
+  FloatingContact,
+  Intro,
+  Nav,
+} from "./components";
 import { useEffect, useState } from "react";
 import useTypingText from "@/utils/hooks/useTypingText";
 
@@ -19,6 +26,9 @@ const INTRO_SEGMENTS = [
   },
 ];
 
+const SECTION_IDS = ["intro", "abilities", "career", "education"] as const;
+const ACTIVE_SECTION_OFFSET_PX = 32;
+
 export default function Home() {
   const { displaySegments, isEqualText: isHelloTextTypingComplete } =
     useTypingText({
@@ -28,6 +38,8 @@ export default function Home() {
     });
 
   const [showContent, setShowContent] = useState(false);
+  const [activeSectionId, setActiveSectionId] =
+    useState<(typeof SECTION_IDS)[number]>("intro");
 
   // 인삿말이 모두 타이핑된 후 0.5초 후에 콘텐츠를 보여줌
   useEffect(() => {
@@ -40,6 +52,40 @@ export default function Home() {
     }
   }, [isHelloTextTypingComplete]);
 
+  useEffect(() => {
+    if (!showContent) return;
+
+    const updateActiveSection = () => {
+      let nextActiveSectionId: (typeof SECTION_IDS)[number] = SECTION_IDS[0];
+
+      SECTION_IDS.forEach((sectionId) => {
+        const section = document.getElementById(sectionId);
+
+        if (!section) return;
+
+        if (section.getBoundingClientRect().top <= ACTIVE_SECTION_OFFSET_PX) {
+          nextActiveSectionId = sectionId;
+        }
+      });
+
+      setActiveSectionId((currentSectionId) =>
+        currentSectionId === nextActiveSectionId
+          ? currentSectionId
+          : nextActiveSectionId,
+      );
+    };
+
+    updateActiveSection();
+
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, [showContent]);
+
   return (
     <section
       className={clsx(
@@ -50,17 +96,22 @@ export default function Home() {
     >
       <div
         className={clsx(
-          "flex items-center justify-center",
+          "flex flex-col justify-center",
+          isHelloTextTypingComplete ? "items-start" : "items-center",
           isHelloTextTypingComplete ? "w-fit shrink-0" : "w-full",
+          "transition-all duration-500 ease-in-out",
+          isHelloTextTypingComplete
+            ? "fixed top-4 left-4 translate-x-0 translate-y-0 typo-title2"
+            : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 typo-display1",
         )}
       >
         <h1
           className={clsx(
             "whitespace-pre",
-            "transition-all duration-500 ease-in-out",
-            isHelloTextTypingComplete
-              ? "absolute top-4 left-4 translate-x-0 translate-y-0 typo-title2"
-              : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 typo-display1",
+            // "transition-all duration-500 ease-in-out",
+            // isHelloTextTypingComplete
+            //   ? "absolute top-4 left-4 translate-x-0 translate-y-0 typo-title2"
+            //   : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 typo-display1",
           )}
         >
           {displaySegments().map((segment, index) => (
@@ -72,6 +123,7 @@ export default function Home() {
             <span className="animate-blink">|</span>
           )}
         </h1>
+        <Nav showContent={showContent} activeSectionId={activeSectionId} />
       </div>
       <div
         className={clsx(

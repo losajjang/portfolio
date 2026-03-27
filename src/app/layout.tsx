@@ -21,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="kr" className={`${pretendard.variable}`}>
+    <html lang="ko" className={`${pretendard.variable} scroll-smooth`}>
       <body className={pretendard.className}>
         <section className={clsx("h-full")}>{children}</section>
       </body>

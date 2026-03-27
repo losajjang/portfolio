@@ -23,6 +23,7 @@ const Intro = () => {
 
   return (
     <SectionWrapper
+      id="intro"
       ref={introTitleRef}
       title="핵심 역량"
       isTitleReached={isIntroTitleReached}

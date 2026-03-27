@@ -190,8 +190,9 @@ const Career = () => {
 
   return (
     <SectionWrapper
+      id="career"
       ref={careerTitleRef}
-      title="경력"
+      title="경력 사항"
       isTitleReached={isCareerTitleReached}
     >
       <CareerItem

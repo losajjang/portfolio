@@ -13,8 +13,9 @@ const Education = () => {
 
   return (
     <SectionWrapper
+      id="education"
       ref={educationTitleRef}
-      title="교육"
+      title="교육 사항"
       isTitleReached={isEducationTitleReached}
     >
       <EducationItem
