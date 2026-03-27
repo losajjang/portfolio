@@ -18,7 +18,7 @@ const ProjectDetail = ({ detail, urls }: ProjectDetailProps) => {
   return (
     <div>
       {urls && urls.length > 0 ? (
-        <div className={clsx("flex flex-row gap-4 mb-2")}>
+        <div className={clsx("mb-2 flex flex-wrap gap-2 sm:gap-4")}>
           {urls.map((url, index) => (
             <Link
               key={index}
@@ -39,7 +39,7 @@ const ProjectDetail = ({ detail, urls }: ProjectDetailProps) => {
       <ul
         className={clsx(
           "flex flex-col gap-4",
-          "list-outside list-disc ml-6",
+          "ml-5 list-outside list-disc sm:ml-6",
           "typo-body4_string",
         )}
       >

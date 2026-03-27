@@ -7,9 +7,14 @@ type AbilityItemProps = {
 
 const AbilityItem = ({ title, abilities }: AbilityItemProps) => {
   return (
-    <div className={clsx("grid grid-cols-[100px_1fr] gap-8 items-center")}>
+    <div
+      className={clsx(
+        "grid grid-cols-1 gap-3",
+        "sm:grid-cols-[100px_1fr] sm:items-center sm:gap-8",
+      )}
+    >
       <h3 className={clsx("typo-body3_strong text-gray-gray_80")}>⎮ {title}</h3>
-      <ul className="flex flex-row gap-2">
+      <ul className="flex flex-wrap gap-2">
         {abilities.map((ability, index) => (
           <li
             key={index}

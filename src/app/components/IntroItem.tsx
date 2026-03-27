@@ -13,10 +13,10 @@ const IntroItem = ({
   description = "",
 }: IntroItemProps) => {
   return (
-    <div className={clsx("flex flex-col gap-4 w-60")}>
+    <div className={clsx("flex w-full flex-col gap-4 sm:w-60")}>
       <div
         className={clsx(
-          "relative flex flex-row justify-center items-center gap-2 h-50 rounded-8",
+          "relative flex h-40 flex-row items-center justify-center gap-2 rounded-8 sm:h-50",
           "bg-gray-gray_20",
         )}
       >

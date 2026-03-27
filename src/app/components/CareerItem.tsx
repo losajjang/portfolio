@@ -35,17 +35,18 @@ const CareerItem = ({
   return (
     <div>
       <h3 className="typo-title3 text-gray-gray_80">⎮ {title}</h3>
-      <div className="ml-4">
-        <p className="typo-body4_strong text-gray-gray_60">
-          🗓️ {period} {`${part ? `| ${part}` : ""}`}{" "}
-          {`${position ? `| ${position}` : ""}`}
-        </p>
-        <div className={clsx("ml-4")}>
+      <div className="mt-2 sm:ml-4 sm:mt-0">
+        <div className="flex flex-col gap-1 text-gray-gray_60 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2">
+          <p className="typo-body4_strong">🗓️ {period}</p>
+          {part && <p className="typo-body4_strong">{part}</p>}
+          {position && <p className="typo-body4_strong">{position}</p>}
+        </div>
+        <div className={clsx("mt-3 sm:ml-4 sm:mt-0")}>
           <p className={clsx("typo-body3_strong")}>주요 업무: {description}</p>
           <div
             className={clsx(
               "relative",
-              "border-2 border-gray-gray_30 rounded-xl p-4 mt-4",
+              "mt-4 rounded-xl border-2 border-gray-gray_30 p-3 sm:p-4",
             )}
           >
             <p
@@ -59,18 +60,22 @@ const CareerItem = ({
             </p>
             <div className={clsx("flex flex-col gap-4")}>
               {detail.map((item, index) => (
-                <div key={index} className={clsx("flex gap-2")}>
-                  <span>📌</span>
+                <div key={index} className={clsx("flex items-start gap-2")}>
+                  <span className="pt-0.5">📌</span>
                   <div className="w-full">
                     <p className={clsx("typo-body3_strong text-gray-gray_80")}>
                       {item.project}
                     </p>
-                    <p className={clsx("typo-body4_normal text-gray-gray_60")}>
-                      {item.period} | {item.part} | {item.position}
-                    </p>
+                    <div className="flex flex-col gap-1 text-gray-gray_60 sm:flex-row sm:flex-wrap sm:items-center sm:gap-2">
+                      <p className={clsx("typo-body4_normal")}>{item.period}</p>
+                      <p className={clsx("typo-body4_normal")}>{item.part}</p>
+                      <p className={clsx("typo-body4_normal")}>
+                        {item.position}
+                      </p>
+                    </div>
                     <p
                       className={clsx(
-                        "typo-body4_normal text-gray-gray_80",
+                        "mt-1 typo-body4_normal text-gray-gray_80",
                         "break-keep whitespace-break-spaces",
                       )}
                     >
@@ -80,7 +85,7 @@ const CareerItem = ({
                       <>
                         <button
                           className={clsx(
-                            "typo-detail1_strong text-button-primary hover:text-button-primary_hover cursor-pointer",
+                            "mt-2 cursor-pointer typo-detail1_strong text-button-primary hover:text-button-primary_hover",
                           )}
                           onClick={() => {
                             if (viewMoreInfo.selectedId === item.id) {

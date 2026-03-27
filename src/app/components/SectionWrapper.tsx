@@ -23,7 +23,7 @@ const SectionWrapper = ({
       className={clsx(
         isTitleReached ? "animate-fadeInUp" : "opacity-0",
         "transition-opacity duration-1000",
-        "flex flex-col gap-4 scroll-mt-8",
+        "flex flex-col gap-3 scroll-mt-34 sm:gap-4 sm:scroll-mt-8",
       )}
     >
       <p className={clsx("typo-body2_strong text-primary-primary_50")}>

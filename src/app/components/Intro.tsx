@@ -38,7 +38,7 @@ const Intro = () => {
           <br />
           실서비스를 개발·운영해 온 프론트엔드 개발자입니다.
         </h2>
-        <div className={clsx("flex flex-row gap-4")}>
+        <div className={clsx("flex flex-col gap-4 sm:flex-row")}>
           <IntroItem
             images={[
               { src: javascriptIcon, alt: "JavaScript Logo" },

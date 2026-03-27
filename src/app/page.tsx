@@ -8,8 +8,10 @@ import {
   Intro,
   Nav,
 } from "./components";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useTypingText from "@/utils/hooks/useTypingText";
+
+export type ScrollMarginTopType = number; // 섹션이 화면 상단에 도달하기 전에 활성화되도록 여유 공간을 부모 컴포넌트에서 전달받음
 
 const INTRO_SEGMENTS = [
   {
@@ -40,6 +42,7 @@ export default function Home() {
   const [showContent, setShowContent] = useState(false);
   const [activeSectionId, setActiveSectionId] =
     useState<(typeof SECTION_IDS)[number]>("intro");
+  const introCardRef = useRef<HTMLDivElement | null>(null);
 
   // 인삿말이 모두 타이핑된 후 0.5초 후에 콘텐츠를 보여줌
   useEffect(() => {
@@ -53,17 +56,48 @@ export default function Home() {
   }, [isHelloTextTypingComplete]);
 
   useEffect(() => {
+    const getSmBreakpointPx = () => {
+      const rootFontSize = Number.parseFloat(
+        window.getComputedStyle(document.documentElement).fontSize,
+      );
+      const breakpointValue = window
+        .getComputedStyle(document.documentElement)
+        .getPropertyValue("--breakpoint-sm")
+        .trim();
+
+      if (breakpointValue.endsWith("rem")) {
+        return Number.parseFloat(breakpointValue) * rootFontSize;
+      }
+
+      if (breakpointValue.endsWith("px")) {
+        return Number.parseFloat(breakpointValue);
+      }
+
+      return 760;
+    };
+
+    const getActiveSectionOffsetPx = () => {
+      if (window.innerWidth >= getSmBreakpointPx()) {
+        return ACTIVE_SECTION_OFFSET_PX;
+      }
+
+      const introCardBottom =
+        introCardRef.current?.getBoundingClientRect().bottom;
+
+      return introCardBottom ?? ACTIVE_SECTION_OFFSET_PX;
+    };
     if (!showContent) return;
 
     const updateActiveSection = () => {
       let nextActiveSectionId: (typeof SECTION_IDS)[number] = SECTION_IDS[0];
+      const activeSectionOffsetPx = getActiveSectionOffsetPx();
 
       SECTION_IDS.forEach((sectionId) => {
         const section = document.getElementById(sectionId);
 
         if (!section) return;
 
-        if (section.getBoundingClientRect().top <= ACTIVE_SECTION_OFFSET_PX) {
+        if (section.getBoundingClientRect().top <= activeSectionOffsetPx) {
           nextActiveSectionId = sectionId;
         }
       });
@@ -88,24 +122,23 @@ export default function Home() {
 
   return (
     <section
-      className={clsx(
-        "relative",
-        "w-full h-screen pt-4",
-        isHelloTextTypingComplete ? "flex-row" : "flex-col",
-      )}
+      className={clsx("relative min-h-screen w-full overflow-x-hidden pt-4")}
     >
       <div
+        ref={introCardRef}
         className={clsx(
           "flex flex-col justify-center",
           isHelloTextTypingComplete ? "items-start" : "items-center",
-          isHelloTextTypingComplete ? "w-fit shrink-0" : "w-full",
+          isHelloTextTypingComplete
+            ? "fixed top-4 left-4 right-4 z-40 w-auto max-w-[calc(100vw-2rem)] rounded-3xl border border-gray-gray_20 bg-gray-gray_0/92 px-4 py-4 shadow-[0_18px_50px_rgba(0,0,0,0.08)] backdrop-blur-md sm:left-4 sm:right-auto sm:max-w-none sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none"
+            : "w-full",
           "transition-all duration-500 ease-in-out",
           isHelloTextTypingComplete
-            ? "fixed top-4 left-4 translate-x-0 translate-y-0 typo-title2"
+            ? "translate-x-0 translate-y-0 typo-title2"
             : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 typo-display1",
         )}
       >
-        <h1
+        <header
           className={clsx(
             "whitespace-pre",
             // "transition-all duration-500 ease-in-out",
@@ -122,28 +155,30 @@ export default function Home() {
           {!isHelloTextTypingComplete && (
             <span className="animate-blink">|</span>
           )}
-        </h1>
+        </header>
         <Nav showContent={showContent} activeSectionId={activeSectionId} />
       </div>
       <div
         className={clsx(
           "transition-all duration-500 ease-in-out",
-          showContent ? "flex w-full h-full" : "hidden",
+          showContent ? "flex w-full min-h-screen" : "hidden",
         )}
       >
-        <div className={clsx("flex flex-col gap-12 mx-auto px-80")}>
+        <div
+          className={clsx(
+            "mx-auto flex w-full max-w-[1280px] flex-col gap-10 px-4 pb-32 pt-40",
+            "sm:gap-12 sm:px-28 sm:pb-40 sm:pt-20",
+            "lg:px-40 xl:px-80",
+          )}
+        >
           <Intro />
           <Abilities />
           <Career />
           <Education />
-          <div className="w-full h-100 mb-100">
+          <div className="mb-24 min-h-60 w-full sm:mb-40">
             <p className={clsx("typo-body2_strong text-primary-primary_80")}>
               읽어주셔서 정말 감사드립니다.
             </p>
-            <p className="text-gray-gray_0">-------------</p>
-            <p className="text-gray-gray_0">-------------</p>
-            <p className="text-gray-gray_0">-------------</p>
-            <p className="text-gray-gray_0">-------------</p>
           </div>
         </div>
       </div>

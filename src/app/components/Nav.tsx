@@ -20,12 +20,18 @@ const Nav = ({ showContent, activeSectionId }: NavProps) => {
         showContent ? "opacity-100" : "opacity-0 h-0",
       )}
     >
-      <ul className={clsx("flex flex-col gap-4 mt-8", "typo-title3")}>
+      <ul
+        className={clsx(
+          "mt-4 flex flex-wrap gap-x-4 gap-y-2",
+          "sm:mt-8 sm:flex-col sm:gap-4",
+          "typo-title3",
+        )}
+      >
         {NAV_ITEMS.map((item) => {
           const isActive = item.id === activeSectionId;
 
           return (
-            <li key={item.id}>
+            <li key={item.id} className="shrink-0">
               <a
                 href={item.href}
                 aria-current={isActive ? "location" : undefined}
@@ -34,7 +40,7 @@ const Nav = ({ showContent, activeSectionId }: NavProps) => {
                   isActive ? "text-primary-primary_50" : "text-gray-gray_80",
                 )}
               >
-                🔗 {item.label}
+                {item.label}
               </a>
             </li>
           );
