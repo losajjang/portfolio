@@ -138,15 +138,7 @@ export default function Home() {
             : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 typo-display1",
         )}
       >
-        <header
-          className={clsx(
-            "whitespace-pre",
-            // "transition-all duration-500 ease-in-out",
-            // isHelloTextTypingComplete
-            //   ? "absolute top-4 left-4 translate-x-0 translate-y-0 typo-title2"
-            //   : "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 typo-display1",
-          )}
-        >
+        <header className={clsx("whitespace-pre")}>
           {displaySegments().map((segment, index) => (
             <span key={index} className={segment.className}>
               {segment.text}
