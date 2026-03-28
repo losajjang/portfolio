@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "deploy": "next build && next export && touch out/.nojekyll && gh-pages -d out"
   },
   "dependencies": {
     "clsx": "^2.1.1",
