@@ -130,8 +130,15 @@ export default function Home() {
           "flex flex-col justify-center",
           isHelloTextTypingComplete ? "items-start" : "items-center",
           isHelloTextTypingComplete
-            ? "fixed top-4 left-4 right-4 z-40 w-auto max-w-[calc(100vw-2rem)] rounded-3xl border border-gray-gray_20 bg-gray-gray_0/92 px-4 py-4 shadow-[0_18px_50px_rgba(0,0,0,0.08)] backdrop-blur-md sm:left-4 sm:right-auto sm:max-w-none sm:rounded-none sm:border-0 sm:bg-transparent sm:p-0 sm:shadow-none sm:backdrop-blur-none"
+            ? [
+                "fixed top-4 left-4 right-4 sm:left-4 sm:right-auto z-40",
+                "w-auto max-w-[calc(100vw-2rem)] sm:max-w-none px-4 py-4 sm:p-0",
+                "rounded-3xl sm:rounded-none",
+                "border-gray-gray_20 bg-gray-gray_0/92 sm:border-0 sm:bg-transparent",
+                "shadow-[0_18px_50px_rgba(0,0,0,0.08)] backdrop-blur-md sm:shadow-none sm:backdrop-blur-none",
+              ]
             : "w-full",
+          showContent ? "border" : "border-0",
           "transition-all duration-500 ease-in-out",
           isHelloTextTypingComplete
             ? "translate-x-0 translate-y-0 typo-title2"
