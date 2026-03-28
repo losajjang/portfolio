@@ -35,8 +35,8 @@ const Intro = () => {
           사용자 입력 흐름이 복잡한 서비스에서
           <br />
           폼, 상태 관리, 공통 컴포넌트, 디자인 시스템 제작과
-          <br />
-          실서비스를 개발·운영해 온 프론트엔드 개발자입니다.
+          <br className="hidden sm:block" /> 실서비스를 개발·운영해 온
+          프론트엔드 개발자입니다.
         </h2>
         <div className={clsx("flex flex-col gap-4 sm:flex-row")}>
           <IntroItem
