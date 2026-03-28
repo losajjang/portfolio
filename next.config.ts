@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-const isProd = process.env.NEXT_PUBLIC_IS_PROD === "false";
+const isProd = process.env.NEXT_PUBLIC_IS_PROD === "true";
 
 const nextConfig: NextConfig = {
   output: "export",
