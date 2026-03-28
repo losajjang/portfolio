@@ -7,7 +7,7 @@ import {
   FloatingContact,
   Intro,
   Nav,
-} from "./components";
+} from "../components";
 import { useEffect, useRef, useState } from "react";
 import useTypingText from "@/utils/hooks/useTypingText";
 
