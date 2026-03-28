@@ -1,10 +1,12 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NEXT_PUBLIC_IS_PROD === "false";
+
 const nextConfig: NextConfig = {
   output: "export",
   trailingSlash: true,
-  basePath: "/portfolio",
-  assetPrefix: "/portfolio/",
+  basePath: isProd ? "/portfolio" : undefined,
+  assetPrefix: isProd ? "/portfolio/" : undefined,
   images: {
     unoptimized: true,
   },
