@@ -158,7 +158,7 @@ export default function Home() {
       >
         <div
           className={clsx(
-            "mx-auto flex w-full max-w-[1280px] flex-col gap-10 px-4 pb-32 pt-40",
+            "mx-auto flex w-full max-w-7xl flex-col gap-10 px-4 pb-32 pt-40",
             "sm:gap-12 sm:px-28 sm:pb-40 sm:pt-20",
             "lg:px-40 xl:px-80",
           )}
