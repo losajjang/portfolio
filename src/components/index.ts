@@ -11,6 +11,7 @@ import CareerExpandDetail from "./CareerExpandDetail";
 import ProjectDetail from "./ProjectDetail";
 import FloatingContact from "./FloatingContact";
 import Nav from "./Nav";
+import Button from "./Button";
 
 export {
   Abilities,
@@ -26,4 +27,5 @@ export {
   ProjectDetail,
   FloatingContact,
   Nav,
+  Button,
 };
