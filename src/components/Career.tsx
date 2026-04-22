@@ -1,11 +1,21 @@
-import { useRef } from "react";
+import { ReactNode, useRef } from "react";
 import SectionWrapper from "./SectionWrapper";
 import useInViewportOffset from "@/utils/hooks/useInViewportOffset";
 import CareerItem from "./CareerItem";
 import dayjs from "dayjs";
 import ProjectDetail from "./ProjectDetail";
 
-const CAREGUARDIAN_CAREER = [
+export type CareerItemType = {
+  id: number;
+  project: string;
+  period: string;
+  part: string;
+  position: string;
+  description: string;
+  detail?: ReactNode;
+};
+
+const CAREGUARDIAN_CAREER: CareerItemType[] = [
   {
     id: 1,
     project: "돌봄의신 서비스 리뉴얼",
@@ -201,7 +211,7 @@ const Career = () => {
         part="프론트엔드 개발"
         position="팀원"
         description="간병 서비스 신규 개발 및 유지 보수"
-        detail={CAREGUARDIAN_CAREER}
+        career={CAREGUARDIAN_CAREER}
       />
       <CareerItem
         title="케이알지그룹 주식회사"
@@ -209,7 +219,7 @@ const Career = () => {
         part="프론트엔드 개발"
         position="팀원"
         description="부동산 중개 서비스 유지 보수"
-        detail={KRG_CAREER}
+        career={KRG_CAREER}
       />
     </SectionWrapper>
   );

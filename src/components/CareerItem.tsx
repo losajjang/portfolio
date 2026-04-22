@@ -1,6 +1,7 @@
 import clsx from "clsx";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import CareerExpandDetail from "./CareerExpandDetail";
+import { CareerItemType } from "./Career";
 
 type CareerItemProps = {
   title: string;
@@ -8,15 +9,7 @@ type CareerItemProps = {
   part: string;
   position: string;
   description: string;
-  detail: {
-    id: number;
-    project: string;
-    period: string;
-    part: string;
-    position: string;
-    description: string;
-    detail?: ReactNode;
-  }[];
+  career: CareerItemType[];
 };
 
 const CareerItem = ({
@@ -25,7 +18,7 @@ const CareerItem = ({
   part,
   position,
   description,
-  detail,
+  career,
 }: CareerItemProps) => {
   const [viewMoreInfo, setViewMoreInfo] = useState({
     isOpen: false,
@@ -59,7 +52,7 @@ const CareerItem = ({
               진행 프로젝트
             </p>
             <div className={clsx("flex flex-col gap-4")}>
-              {detail.map((item, index) => (
+              {career.map((item, index) => (
                 <div key={index} className={clsx("flex items-start gap-2")}>
                   <span className="pt-0.5">📌</span>
                   <div className="w-full">
