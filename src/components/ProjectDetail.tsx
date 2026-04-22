@@ -1,5 +1,9 @@
+"use client";
 import clsx from "clsx";
 import Link from "next/link";
+import Button from "./Button";
+import { ReactNode, useState } from "react";
+import Modal from "./Modal";
 
 export type UrlType = {
   label: string;
@@ -10,11 +14,28 @@ type ProjectDetailProps = {
   detail: {
     detailTitle: string;
     description?: string;
+    demo?: {
+      label?: string;
+      modalContent?: {
+        id?: string;
+        title?: string;
+        description?: ReactNode | string;
+        demoBody?: ReactNode;
+      };
+    };
   }[];
   urls?: UrlType[];
 };
 
 const ProjectDetail = ({ detail, urls }: ProjectDetailProps) => {
+  const [isModalOpen, setIsModalOpen] = useState<{
+    isOpen: boolean;
+    id: string;
+  }>({
+    isOpen: false,
+    id: "",
+  });
+
   return (
     <div>
       {urls && urls.length > 0 ? (
@@ -44,14 +65,55 @@ const ProjectDetail = ({ detail, urls }: ProjectDetailProps) => {
         )}
       >
         {detail.map((item, index) => (
-          <li key={index}>
-            {item.detailTitle}
-            {item.description && (
-              <p className={clsx("typo-body4_normal mt-1")}>
-                ↳ {item.description}
-              </p>
-            )}
-          </li>
+          <div key={index}>
+            <li>
+              {item.detailTitle}
+              {item.description && (
+                <p className={clsx("typo-body4_normal mt-1")}>
+                  ↳ {item.description}
+                </p>
+              )}
+              {item.demo && (
+                <Button
+                  buttonName={item.demo.label || "데모 보기"}
+                  onClick={() =>
+                    setIsModalOpen({
+                      isOpen: true,
+                      id: item.demo?.modalContent?.id || "",
+                    })
+                  }
+                  buttonSize="small"
+                  buttonStyle="primary"
+                />
+              )}
+            </li>
+            <Modal
+              isOpen={
+                isModalOpen.isOpen &&
+                isModalOpen.id === item.demo?.modalContent?.id
+              }
+              onClose={() => setIsModalOpen({ isOpen: false, id: "" })}
+              title={item.demo?.modalContent?.title || "데모"}
+              description={
+                item.demo?.modalContent?.description || "데모 내용이 없습니다."
+              }
+              footer={
+                <>
+                  <Button
+                    buttonName="닫기"
+                    buttonStyle="secondary"
+                    onClick={() => setIsModalOpen({ isOpen: false, id: "" })}
+                  />
+                  <Button
+                    buttonName="확인"
+                    onClick={() => setIsModalOpen({ isOpen: false, id: "" })}
+                  />
+                </>
+              }
+            >
+              {item.demo?.modalContent?.demoBody || "데모 내용이 없습니다."}
+            </Modal>
+          </div>
         ))}
       </ul>
     </div>

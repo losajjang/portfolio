@@ -42,6 +42,23 @@ const CAREGUARDIAN_CAREER: CareerItemType[] = [
               "일정 변경/단축/연장 로직을 포함한 커스텀 캘린더 컴포넌트 개발",
             description:
               "날짜 선택 제약(과거 선택 방지, 시작/종료일 규칙 등)을 UI에서 처리. 운영팀의 수기 일정 조정/문의 건수를 감소",
+            demo: {
+              label: "캘린더 시연",
+              modalContent: {
+                id: "calendar-demo",
+                title: "커스텀 캘린더 데모",
+                description: <>캘린더 데모입니다.</>,
+                demoBody: (
+                  <div>
+                    <p>커스텀 캘린더 컴포넌트 시연 화면입니다.</p>
+                    <p>
+                      날짜 선택 제약과 일정 변경/단축/연장 기능이 포함되어
+                      있습니다.
+                    </p>
+                  </div>
+                ),
+              },
+            },
           },
           {
             detailTitle: "복잡한 단계별 입력 폼 구현 및 validation 스키마 설계",
