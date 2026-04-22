@@ -14,8 +14,7 @@ const BASE_PATH = "/portfolio";
 
 export const metadata: Metadata = {
   title: "박재민 포트폴리오",
-  description:
-    "프론트엔드 개발자 박재민의 포트폴리오 웹사이트입니다.",
+  description: "프론트엔드 개발자 박재민의 포트폴리오 웹사이트입니다.",
 };
 
 export default function RootLayout({
@@ -57,6 +56,7 @@ export default function RootLayout({
       </head>
       <body className={pretendard.className}>
         <section className={clsx("h-full")}>{children}</section>
+        <div id="modal-root" />
       </body>
     </html>
   );
