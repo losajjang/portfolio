@@ -140,7 +140,7 @@ const Modal = ({
   return ReactDOM.createPortal(
     <div
       className={clsx(
-        "fixed inset-0 z-[100]",
+        "fixed inset-0 z-100",
         "flex items-end justify-center p-4 sm:items-center",
         "bg-modalBg",
       )}
