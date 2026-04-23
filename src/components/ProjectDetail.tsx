@@ -104,10 +104,6 @@ const ProjectDetail = ({ detail, urls }: ProjectDetailProps) => {
                     buttonStyle="secondary"
                     onClick={() => setIsModalOpen({ isOpen: false, id: "" })}
                   />
-                  <Button
-                    buttonName="확인"
-                    onClick={() => setIsModalOpen({ isOpen: false, id: "" })}
-                  />
                 </>
               }
             >
