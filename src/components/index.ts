@@ -13,6 +13,8 @@ import FloatingContact from "./FloatingContact";
 import Nav from "./Nav";
 import Button from "./Button";
 import Modal from "./Modal";
+import Calendar from "./Calendar";
+import Dropdown from "./Dropdown";
 
 export {
   Abilities,
@@ -30,4 +32,6 @@ export {
   Nav,
   Button,
   Modal,
+  Calendar,
+  Dropdown,
 };
