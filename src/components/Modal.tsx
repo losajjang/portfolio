@@ -195,7 +195,7 @@ const Modal = ({
                   "hover:bg-gray-gray_20 hover:text-gray-gray_90",
                 )}
               >
-                X
+                ✕
               </button>
             )}
           </div>
