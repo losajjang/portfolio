@@ -144,7 +144,11 @@ const Calendar = ({ selectedDateListener }: CalendarProps) => {
         )}
       >
         <div className={clsx("flex items-center gap-1 w-full")}>
-          <span className={clsx("typo-body3_normal")}>최소 이동 제한: </span>
+          <span
+            className={clsx("typo-body4_normal sm:typo-body3_normal shrink-0")}
+          >
+            최소이동제한:{" "}
+          </span>
           <Dropdown
             width="w-30"
             value={minYear}
@@ -183,7 +187,11 @@ const Calendar = ({ selectedDateListener }: CalendarProps) => {
           />
         </div>
         <div className={clsx("flex items-center gap-1 w-full")}>
-          <span className={clsx("typo-body3_normal")}>최대 이동 제한: </span>
+          <span
+            className={clsx("typo-body4_normal sm:typo-body3_normal shrink-0")}
+          >
+            최대이동제한:{" "}
+          </span>
           <Dropdown
             width="w-30"
             value={maxYear}
