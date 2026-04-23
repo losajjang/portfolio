@@ -4,15 +4,15 @@ import { ReactNode, useEffect, useId, useRef } from "react";
 import ReactDOM from "react-dom";
 
 type ModalProps = {
-  isOpen: boolean;
-  onClose: () => void;
-  title?: ReactNode;
-  description?: ReactNode;
-  children: ReactNode;
-  footer?: ReactNode;
-  closeOnBackdrop?: boolean;
-  closeOnEscape?: boolean;
-  showCloseButton?: boolean;
+  isOpen: boolean; // 모달이 열려 있는지 여부를 나타내는 boolean 값
+  onClose: () => void; // 모달을 닫는 함수. 모달 외부 클릭, 닫기 버튼 클릭, Escape 키 입력 등으로 모달을 닫을 때 호출됨
+  title?: ReactNode; // 모달의 title
+  description?: ReactNode; // 모달의 description. title 아래에 위치하여 title에 대한 추가 설명 제공
+  children: ReactNode; // 모달의 주요 내용
+  footer?: ReactNode; // 모달의 footer. 주로 버튼 등을 배치
+  closeOnBackdrop?: boolean; // 모달 외부 클릭 시 모달을 닫을지 여부
+  closeOnEscape?: boolean; // Escape 키 입력 시 모달을 닫을지 여부
+  showCloseButton?: boolean; // 모달 상단의 닫기 버튼 표시 여부
   panelClassName?: string;
 };
 
@@ -141,7 +141,7 @@ const Modal = ({
     <div
       className={clsx(
         "fixed inset-0 z-100",
-        "flex items-end justify-center p-4 sm:items-center",
+        "flex items-center justify-center p-4",
         "bg-modalBg",
       )}
       onMouseDown={(event) => {
@@ -159,7 +159,10 @@ const Modal = ({
         aria-describedby={description ? descriptionId : undefined}
         tabIndex={-1}
         className={clsx(
-          "relative w-full max-w-xl rounded-3xl bg-gray-gray_0 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.18)] sm:p-6",
+          "relative",
+          "w-full max-w-xl sm:p-6",
+          "rounded-3xl bg-gray-gray_0 p-5 shadow-[0_24px_80px_rgba(0,0,0,0.18)]",
+          "max-h-screen",
           panelClassName,
         )}
       >
@@ -186,19 +189,26 @@ const Modal = ({
                 onClick={onClose}
                 aria-label="모달 닫기"
                 className={clsx(
-                  "shrink-0 rounded-full px-3 py-1.5",
+                  "shrink-0 rounded-full w-8 h-8",
                   "typo-detail1_strong text-gray-gray_60",
                   "cursor-pointer bg-gray-gray_10 transition-colors duration-200",
                   "hover:bg-gray-gray_20 hover:text-gray-gray_90",
                 )}
               >
-                닫기
+                X
               </button>
             )}
           </div>
         )}
 
-        <div className="typo-body4_normal text-gray-gray_80">{children}</div>
+        <div
+          className={clsx(
+            "max-h-[calc(100vh-20rem)] overflow-y-auto",
+            "typo-body4_normal text-gray-gray_80",
+          )}
+        >
+          {children}
+        </div>
 
         {footer && (
           <div className="mt-6 flex justify-end gap-2 border-t border-gray-gray_20 pt-4">
