@@ -5,6 +5,11 @@ import { useEffect, useRef, useState } from "react";
 
 const CONTACTS = [
   {
+    label: "Phone",
+    value: "010-7170-9054",
+    href: "tel:01071709054",
+  },
+  {
     label: "Email",
     value: "losajjang@gmail.com",
     href: "mailto:losajjang@gmail.com",
