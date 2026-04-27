@@ -248,150 +248,170 @@ const Calendar = ({ selectedDateListener }: CalendarProps) => {
           "flex flex-col gap-2 w-full bg-gray-gray_20 p-4 rounded-2xl mb-4",
         )}
       >
-        <div className={clsx("flex items-center gap-1 w-full")}>
+        <div
+          className={clsx(
+            "flex flex-col sm:flex-row items-center gap-1 w-full",
+          )}
+        >
           <span
-            className={clsx("typo-body4_normal sm:typo-body3_normal shrink-0")}
+            className={clsx(
+              "w-full sm:w-auto typo-body4_normal sm:typo-body3_normal shrink-0 text-left",
+            )}
           >
             최소이동제한:{" "}
           </span>
-          <Dropdown
-            width="w-30"
-            value={minYear}
-            onChange={handleMinYearChange}
-            placeholder="최소 이동 제한 년도"
-            options={[{ label: "없음", value: "" }].concat(
-              Array.from({ length: 10 }).map((_, index) => {
-                const year = dayjs().subtract(index, "year").year();
+          <div className={clsx("flex gap-1")}>
+            <Dropdown
+              width="w-24 sm:w-30"
+              value={minYear}
+              onChange={handleMinYearChange}
+              placeholder="최소 이동 제한 년도"
+              options={[{ label: "없음", value: "" }].concat(
+                Array.from({ length: 10 }).map((_, index) => {
+                  const year = dayjs().subtract(index, "year").year();
+                  return {
+                    label: `${year}년`,
+                    value: year.toString(),
+                  };
+                }),
+              )}
+            />
+            <Dropdown
+              width="w-20 sm:w-22"
+              value={minMonth}
+              onChange={handleMinMonthChange}
+              placeholder="최소 이동 제한 월"
+              options={Array.from({ length: 12 }).map((_, index) => {
+                const month = index + 1;
                 return {
-                  label: `${year}년`,
-                  value: year.toString(),
+                  label: `${month}월`,
+                  value: month.toString(),
+                  disabled: dayjs()
+                    .year(Number(maxYear))
+                    .month(Number(maxMonth) - 1)
+                    .isBefore(
+                      dayjs()
+                        .year(Number(minYear))
+                        .month(month - 1),
+                    ), // 최대 이동 제한보다 이후 월은 선택 불가능
                 };
-              }),
-            )}
-          />
-          <Dropdown
-            width="w-22"
-            value={minMonth}
-            onChange={handleMinMonthChange}
-            placeholder="최소 이동 제한 월"
-            options={Array.from({ length: 12 }).map((_, index) => {
-              const month = index + 1;
-              return {
-                label: `${month}월`,
-                value: month.toString(),
-                disabled: dayjs()
-                  .year(Number(maxYear))
-                  .month(Number(maxMonth) - 1)
-                  .isBefore(
-                    dayjs()
-                      .year(Number(minYear))
-                      .month(month - 1),
-                  ), // 최대 이동 제한보다 이후 월은 선택 불가능
-              };
-            })}
-          />
-          <Dropdown
-            width="w-22"
-            value={minDay}
-            onChange={handleMinDayChange}
-            placeholder="최소 이동 제한 일"
-            options={Array.from({
-              length: calculateDaysInMonth(
-                minYear ? Number(minYear) : dayjs().year(),
-                minMonth ? Number(minMonth) - 1 : dayjs().month(),
-              ),
-            }).map((_, index) => {
-              const day = index + 1;
-              return {
-                label: `${day}일`,
-                value: day.toString(),
-                disabled: dayjs()
-                  .year(Number(maxYear))
-                  .month(Number(maxMonth) - 1)
-                  .date(Number(maxDay))
-                  .isBefore(
-                    dayjs()
-                      .year(Number(minYear))
-                      .month(Number(minMonth) - 1)
-                      .date(day),
-                    "day",
-                  ), // 최대 이동 제한 일보다 이후 날짜는 선택 불가능
-              };
-            })}
-          />
+              })}
+              disabled={!minYear} // 최소 이동 제한 년도가 선택되지 않으면 월 선택 불가능
+            />
+            <Dropdown
+              width="w-20 sm:w-22"
+              value={minDay}
+              onChange={handleMinDayChange}
+              placeholder="최소 이동 제한 일"
+              options={Array.from({
+                length: calculateDaysInMonth(
+                  minYear ? Number(minYear) : dayjs().year(),
+                  minMonth ? Number(minMonth) - 1 : dayjs().month(),
+                ),
+              }).map((_, index) => {
+                const day = index + 1;
+                return {
+                  label: `${day}일`,
+                  value: day.toString(),
+                  disabled: dayjs()
+                    .year(Number(maxYear))
+                    .month(Number(maxMonth) - 1)
+                    .date(Number(maxDay))
+                    .isBefore(
+                      dayjs()
+                        .year(Number(minYear))
+                        .month(Number(minMonth) - 1)
+                        .date(day),
+                      "day",
+                    ), // 최대 이동 제한 일보다 이후 날짜는 선택 불가능
+                };
+              })}
+              disabled={!minYear} // 최소 이동 제한 년도 또는 월이 선택되지 않으면 일 선택 불가능
+            />
+          </div>
         </div>
-        <div className={clsx("flex items-center gap-1 w-full")}>
+        <div
+          className={clsx(
+            "flex flex-col sm:flex-row items-center gap-1 w-full",
+          )}
+        >
           <span
-            className={clsx("typo-body4_normal sm:typo-body3_normal shrink-0")}
+            className={clsx(
+              "w-full sm:w-auto typo-body4_normal sm:typo-body3_normal shrink-0 text-left",
+            )}
           >
             최대이동제한:{" "}
           </span>
-          <Dropdown
-            width="w-30"
-            value={maxYear}
-            onChange={handleMaxYearChange}
-            placeholder="최대 이동 제한 년도"
-            options={[{ label: "없음", value: "" }].concat(
-              Array.from({ length: 10 }).map((_, index) => {
-                const year = dayjs().add(index, "year").year();
+          <div className={clsx("flex gap-1")}>
+            <Dropdown
+              width="w-24 sm:w-30"
+              value={maxYear}
+              onChange={handleMaxYearChange}
+              placeholder="최대 이동 제한 년도"
+              options={[{ label: "없음", value: "" }].concat(
+                Array.from({ length: 10 }).map((_, index) => {
+                  const year = dayjs().add(index, "year").year();
+                  return {
+                    label: `${year}년`,
+                    value: year.toString(),
+                  };
+                }),
+              )}
+            />
+            <Dropdown
+              width="w-20 sm:w-22"
+              value={maxMonth}
+              onChange={handleMaxMonthChange}
+              placeholder="최대 이동 제한 월"
+              options={Array.from({ length: 12 }).map((_, index) => {
+                const month = index + 1;
                 return {
-                  label: `${year}년`,
-                  value: year.toString(),
+                  label: `${month}월`,
+                  value: month.toString(),
+                  disabled: dayjs()
+                    .year(Number(minYear))
+                    .month(Number(minMonth) - 1)
+                    .isAfter(
+                      dayjs()
+                        .year(Number(maxYear))
+                        .month(month - 1),
+                      "month",
+                    ), // 최소 이동 제한보다 이전 월은 선택 불가능
                 };
-              }),
-            )}
-          />
-          <Dropdown
-            width="w-22"
-            value={maxMonth}
-            onChange={handleMaxMonthChange}
-            placeholder="최대 이동 제한 월"
-            options={Array.from({ length: 12 }).map((_, index) => {
-              const month = index + 1;
-              return {
-                label: `${month}월`,
-                value: month.toString(),
-                disabled: dayjs()
-                  .year(Number(minYear))
-                  .month(Number(minMonth) - 1)
-                  .isAfter(
-                    dayjs()
-                      .year(Number(maxYear))
-                      .month(month - 1),
-                    "month",
-                  ), // 최소 이동 제한보다 이전 월은 선택 불가능
-              };
-            })}
-          />
-          <Dropdown
-            width="w-22"
-            value={maxDay}
-            onChange={handleMaxDayChange}
-            placeholder="최대 이동 제한 일"
-            options={Array.from({
-              length: calculateDaysInMonth(
-                maxYear ? Number(maxYear) : dayjs().year(),
-                maxMonth ? Number(maxMonth) - 1 : dayjs().month(),
-              ),
-            }).map((_, index) => {
-              const day = index + 1;
-              return {
-                label: `${day}일`,
-                value: day.toString(),
-                disabled: dayjs()
-                  .year(Number(minYear))
-                  .month(Number(minMonth) - 1)
-                  .date(Number(minDay))
-                  .isAfter(
-                    dayjs()
-                      .year(Number(maxYear))
-                      .month(Number(maxMonth) - 1)
-                      .date(day),
-                    "day",
-                  ), // 최소 이동 제한 일보다 이전 날짜는 선택 불가능
-              };
-            })}
-          />
+              })}
+              disabled={!maxYear} // 최대 이동 제한 년도가 선택되지 않으면 월 선택 불가능
+            />
+            <Dropdown
+              width="w-20 sm:w-22"
+              value={maxDay}
+              onChange={handleMaxDayChange}
+              placeholder="최대 이동 제한 일"
+              options={Array.from({
+                length: calculateDaysInMonth(
+                  maxYear ? Number(maxYear) : dayjs().year(),
+                  maxMonth ? Number(maxMonth) - 1 : dayjs().month(),
+                ),
+              }).map((_, index) => {
+                const day = index + 1;
+                return {
+                  label: `${day}일`,
+                  value: day.toString(),
+                  disabled: dayjs()
+                    .year(Number(minYear))
+                    .month(Number(minMonth) - 1)
+                    .date(Number(minDay))
+                    .isAfter(
+                      dayjs()
+                        .year(Number(maxYear))
+                        .month(Number(maxMonth) - 1)
+                        .date(day),
+                      "day",
+                    ), // 최소 이동 제한 일보다 이전 날짜는 선택 불가능
+                };
+              })}
+              disabled={!maxYear} // 최대 이동 제한 년도 또는 월이 선택되지 않으면 일 선택 불가능
+            />
+          </div>
         </div>
       </div>
       <div className={clsx("flex items-center justify-between w-full mb-4")}>
