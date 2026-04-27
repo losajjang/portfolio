@@ -5,6 +5,7 @@ type ButtonProps = {
   buttonSize?: "small" | "medium" | "large";
   buttonStyle?: "primary" | "secondary";
   onClick?: () => void;
+  disabled?: boolean;
 };
 
 const Button = ({
@@ -12,6 +13,7 @@ const Button = ({
   buttonSize = "medium",
   buttonStyle = "primary",
   onClick = () => {},
+  disabled = false,
 }: ButtonProps) => {
   const buttonSizeClass = clsx({
     "py-1 px-2 typo-detail1_normal": buttonSize === "small",
@@ -29,7 +31,14 @@ const Button = ({
   return (
     <button
       onClick={onClick}
-      className={clsx(buttonSizeClass, buttonStyleClass, "rounded-md")}
+      className={clsx(
+        buttonSizeClass,
+        buttonStyleClass,
+        "rounded-md",
+        disabled &&
+          "bg-gray-gray_60 text-gray-gray_30 hover:bg-gray-gray_60 active:bg-gray-gray_60",
+      )}
+      disabled={disabled}
     >
       {buttonName}
     </button>
