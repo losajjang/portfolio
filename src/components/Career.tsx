@@ -113,6 +113,7 @@ const Career = () => {
                 "절차를 완료하지 못한 사용자의 화면 이탈을 한 번더 확인시켜 운영팀으로의 문의 감소",
               demo: {
                 label: "시연 추가 예정",
+                disabled: true,
                 modalContent: {},
               },
             },
@@ -121,6 +122,7 @@ const Career = () => {
               description: "시간 선택의 편의성 향상",
               demo: {
                 label: "시연 추가 예정",
+                disabled: true,
                 modalContent: {},
               },
             },
@@ -151,6 +153,7 @@ const Career = () => {
                 "사용자가 현재 진행 중인 단계를 쉽게 확인할 수 있도록 시각적 피드백 제공",
               demo: {
                 label: "시연 추가 예정",
+                disabled: true,
                 modalContent: {},
               },
             },
@@ -175,6 +178,7 @@ const Career = () => {
                 "운영팀내에서 수기로 작성해야 하는 문서를 전산화, 자동화해 업무 부하 감소",
               demo: {
                 label: "시연 추가 예정",
+                disabled: true,
                 modalContent: {},
               },
             },
