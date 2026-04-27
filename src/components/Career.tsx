@@ -74,12 +74,22 @@ const Career = () => {
                 "복잡한 단계별 입력 폼 구현 및 validation 스키마 설계",
               description:
                 "단계 이동 시 검증/에러 메시지를 정교하게 처리하고 사용자의 입력 오류 및 이탈을 줄이는 데 기여",
+              demo: {
+                label: "시연 추가 예정",
+                disabled: true,
+                modalContent: {},
+              },
             },
             {
               detailTitle:
                 "디자인 시스템, 팝업 모달, 드래그&드롭 업로드, 토스트 등 공통 UI 컴포넌트화",
               description:
                 "신규 화면 개발 시 재사용할 수 있도록 구조화해 개발 효율성 향상",
+              demo: {
+                label: "시연 추가 예정",
+                disabled: true,
+                modalContent: {},
+              },
             },
           ]}
         />
@@ -101,10 +111,18 @@ const Career = () => {
                 "간병 신청 후 특정 조건 충족시 화면 이탈 방지 네비게이션 가드 기능 개발",
               description:
                 "절차를 완료하지 못한 사용자의 화면 이탈을 한 번더 확인시켜 운영팀으로의 문의 감소",
+              demo: {
+                label: "시연 추가 예정",
+                modalContent: {},
+              },
             },
             {
               detailTitle: "무한롤링 기능이 있는 시간 선택 컴포넌트 개발",
               description: "시간 선택의 편의성 향상",
+              demo: {
+                label: "시연 추가 예정",
+                modalContent: {},
+              },
             },
           ]}
         />
@@ -131,6 +149,10 @@ const Career = () => {
                 "간병 신청 단계를 시각적으로 확인할 수 있는 progress bar 컴포넌트 개발",
               description:
                 "사용자가 현재 진행 중인 단계를 쉽게 확인할 수 있도록 시각적 피드백 제공",
+              demo: {
+                label: "시연 추가 예정",
+                modalContent: {},
+              },
             },
           ]}
         />
@@ -151,6 +173,10 @@ const Career = () => {
               detailTitle: "PDF 문서 생성/미리보기 후 인쇄/다운로드 기능 개발",
               description:
                 "운영팀내에서 수기로 작성해야 하는 문서를 전산화, 자동화해 업무 부하 감소",
+              demo: {
+                label: "시연 추가 예정",
+                modalContent: {},
+              },
             },
             {
               detailTitle: "PG 모듈 이용 간병비 결제 기능 적용",
