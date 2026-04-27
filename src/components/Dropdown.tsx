@@ -70,7 +70,7 @@ const Dropdown = ({
         className={clsx(
           "flex w-full items-center justify-between gap-3",
           "rounded-8 border px-4 py-3 text-left transition-colors duration-200",
-          "typo-body4_normal",
+          "typo-detail1_normal sm:typo-body4_normal",
           disabled
             ? "cursor-not-allowed border-gray-gray_20 bg-gray-gray_10 text-gray-gray_40"
             : "cursor-pointer border-gray-gray_30 bg-gray-gray_0 text-gray-gray_90 hover:border-primary-primary_30",
