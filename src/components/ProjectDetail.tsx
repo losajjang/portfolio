@@ -16,6 +16,7 @@ type ProjectDetailProps = {
     description?: string;
     demo?: {
       label?: string;
+      disabled?: boolean;
       modalContent?: {
         id?: string;
         title?: string;
@@ -78,12 +79,13 @@ const ProjectDetail = ({ detail, urls }: ProjectDetailProps) => {
                   buttonName={item.demo.label || "데모 보기"}
                   onClick={() =>
                     setIsModalOpen({
-                      isOpen: true,
+                      isOpen: item.demo?.modalContent?.id ? true : false,
                       id: item.demo?.modalContent?.id || "",
                     })
                   }
                   buttonSize="small"
                   buttonStyle="primary"
+                  disabled={item.demo?.disabled}
                 />
               )}
             </li>
