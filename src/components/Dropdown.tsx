@@ -1,7 +1,7 @@
 "use client";
-
 import clsx from "clsx";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { forwardRef, useEffect, useMemo, useRef, useState } from "react";
+import HelperText from "./HelperText";
 
 export type DropdownOption = {
   label: string;
@@ -16,18 +16,23 @@ type DropdownProps = {
   placeholder?: string;
   disabled?: boolean;
   helperText?: string;
+  isError?: boolean;
   onChange?: (value: string) => void;
 };
 
-const Dropdown = ({
-  width = "w-full",
-  options,
-  value = "",
-  placeholder = "항목을 선택해주세요",
-  disabled = false,
-  helperText = "",
-  onChange = () => {},
-}: DropdownProps) => {
+const Dropdown = forwardRef<HTMLButtonElement, DropdownProps>(function Dropdown(
+  {
+    width = "w-full",
+    options,
+    value = "",
+    placeholder = "항목을 선택해주세요",
+    disabled = false,
+    helperText = "",
+    isError = false,
+    onChange = () => {},
+  },
+  ref,
+) {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -63,18 +68,21 @@ const Dropdown = ({
   return (
     <div ref={dropdownRef} className={clsx("relative", width)}>
       <button
+        ref={ref}
         type="button"
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         className={clsx(
-          "flex w-full items-center justify-between gap-3",
+          "flex h-10 w-full items-center justify-between gap-3",
           "rounded-8 border px-4 py-3 text-left transition-colors duration-200",
           "typo-detail1_normal sm:typo-body4_normal",
           disabled
             ? "cursor-not-allowed border-gray-gray_20 bg-gray-gray_10 text-gray-gray_40"
             : "cursor-pointer border-gray-gray_30 bg-gray-gray_0 text-gray-gray_90 hover:border-primary-primary_30",
           isOpen && !disabled && "border-primary-primary_50 shadow-inputShadow",
+          isError &&
+            "border-status-error_50 shadow-inputErrorShadow hover:border-status-error_50",
         )}
         onClick={() => {
           if (disabled) return;
@@ -145,13 +153,9 @@ const Dropdown = ({
         </div>
       )}
 
-      {helperText && (
-        <p className="mt-2 px-1 typo-detail1_normal text-gray-gray_60">
-          {helperText}
-        </p>
-      )}
+      {helperText && <HelperText isError={isError} text={helperText} />}
     </div>
   );
-};
+});
 
 export default Dropdown;

@@ -6,6 +6,7 @@ type ButtonProps = {
   buttonStyle?: "primary" | "secondary";
   onClick?: () => void;
   disabled?: boolean;
+  type?: "button" | "submit" | "reset";
 };
 
 const Button = ({
@@ -14,6 +15,7 @@ const Button = ({
   buttonStyle = "primary",
   onClick = () => {},
   disabled = false,
+  type = "button",
 }: ButtonProps) => {
   const buttonSizeClass = clsx({
     "py-1 px-2 typo-detail1_normal": buttonSize === "small",
@@ -22,21 +24,28 @@ const Button = ({
   });
 
   const buttonStyleClass = clsx({
-    "bg-button-primary text-gray-gray_0 hover:bg-button-primary_hover cursor-pointer active:bg-button-primary_clicked":
+    "bg-button-primary hover:bg-button-primary_hover cursor-pointer active:bg-button-primary_clicked":
       buttonStyle === "primary",
-    "bg-button-secondary text-gray-gray_80 hover:bg-button-secondary_hover cursor-pointer active:bg-button-secondary_clicked":
+    "bg-button-secondary hover:bg-button-secondary_hover cursor-pointer active:bg-button-secondary_clicked":
       buttonStyle === "secondary",
   });
 
   return (
     <button
+      type={type}
       onClick={onClick}
       className={clsx(
         buttonSizeClass,
         buttonStyleClass,
         "rounded-md",
-        disabled &&
+        buttonStyle === "primary" && !disabled && "text-gray-gray_0",
+        buttonStyle === "secondary" && !disabled && "text-gray-gray_80",
+        buttonStyle === "primary" &&
+          disabled &&
           "bg-gray-gray_60 text-gray-gray_30 hover:bg-gray-gray_60 active:bg-gray-gray_60",
+        buttonStyle === "secondary" &&
+          disabled &&
+          "text-gray-gray_30 hover:bg-gray-gray_60 active:bg-gray-gray_60",
       )}
       disabled={disabled}
     >

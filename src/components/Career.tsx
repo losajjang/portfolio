@@ -5,6 +5,7 @@ import CareerItem from "./CareerItem";
 import dayjs, { Dayjs } from "dayjs";
 import ProjectDetail from "./ProjectDetail";
 import Calendar from "./Calendar";
+import Form from "./Form";
 
 export type CareerItemType = {
   id: number;
@@ -50,6 +51,7 @@ const Career = () => {
                 "날짜 선택 제약(과거 선택 방지, 시작/종료일 규칙 등)을 UI에서 처리. 운영팀의 수기 일정 조정/문의 건수를 감소",
               demo: {
                 label: "캘린더 시연",
+                disabled: false,
                 modalContent: {
                   id: "calendar-demo",
                   title: "커스텀 캘린더 데모",
@@ -75,9 +77,18 @@ const Career = () => {
               description:
                 "단계 이동 시 검증/에러 메시지를 정교하게 처리하고 사용자의 입력 오류 및 이탈을 줄이는 데 기여",
               demo: {
-                label: "시연 추가 예정",
-                disabled: true,
-                modalContent: {},
+                label: "입력 폼 시연",
+                disabled: false,
+                modalContent: {
+                  id: "form-demo",
+                  title: "입력 폼 데모",
+                  description: "단계별 입력 폼 데모",
+                  demoBody: (
+                    <div>
+                      <Form />
+                    </div>
+                  ),
+                },
               },
             },
             {
@@ -85,11 +96,6 @@ const Career = () => {
                 "디자인 시스템, 팝업 모달, 드래그&드롭 업로드, 토스트 등 공통 UI 컴포넌트화",
               description:
                 "신규 화면 개발 시 재사용할 수 있도록 구조화해 개발 효율성 향상",
-              demo: {
-                label: "시연 추가 예정",
-                disabled: true,
-                modalContent: {},
-              },
             },
           ]}
         />

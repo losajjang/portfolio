@@ -13,6 +13,7 @@
     "deploy": "touch out/.nojekyll && gh-pages --dotfiles -d out"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.9.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.20",
     "next": "16.1.7",
