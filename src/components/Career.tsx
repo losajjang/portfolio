@@ -8,6 +8,7 @@ import Calendar from "./Calendar";
 import Form from "./Form";
 import NavigationGuard from "./NavigationGuard";
 import TimeSelect from "./TimeSelect";
+import PdfGenerator from "./PdfGenerator";
 
 export type CareerItemType = {
   id: number;
@@ -179,11 +180,6 @@ const Career = () => {
                 "간병 신청 단계를 시각적으로 확인할 수 있는 progress bar 컴포넌트 개발",
               description:
                 "사용자가 현재 진행 중인 단계를 쉽게 확인할 수 있도록 시각적 피드백 제공",
-              demo: {
-                label: "시연 추가 예정",
-                disabled: true,
-                modalContent: {},
-              },
             },
           ]}
         />
@@ -205,9 +201,18 @@ const Career = () => {
               description:
                 "운영팀내에서 수기로 작성해야 하는 문서를 전산화, 자동화해 업무 부하 감소",
               demo: {
-                label: "시연 추가 예정",
-                disabled: true,
-                modalContent: {},
+                label: "PDF 문서 시연",
+                disabled: false,
+                modalContent: {
+                  id: "pdf-generator",
+                  title: "PDF 생성 데모",
+                  description: "PDF를 생성할 수 있습니다.",
+                  demoBody: (
+                    <div>
+                      <PdfGenerator />
+                    </div>
+                  ),
+                },
               },
             },
             {

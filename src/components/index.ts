@@ -26,6 +26,7 @@ import NavigationGuard from "./NavigationGuard";
 import TimePicker from "./TimePicker";
 import TimeSelect from "./TimeSelect";
 import { HDivider, VDivider } from "./Divider";
+import PdfGenerator from "./PdfGenerator";
 
 export {
   Abilities,
@@ -57,4 +58,5 @@ export {
   TimeSelect,
   HDivider,
   VDivider,
+  PdfGenerator,
 };
