@@ -13,27 +13,42 @@ type HoursMinutesSelectProps = {
   useRolling?: boolean;
 };
 
+type AmPm = "오전" | "오후";
+
+type SelectedHourMinute = {
+  amPm: AmPm;
+  hour: number;
+  minute: number;
+};
+
+// 시간 초기값 생성
+const getInitialTime = (dateValue: string): SelectedHourMinute => {
+  const parsedDate = dayjs(dateValue);
+  const initialDate = parsedDate.isValid() ? parsedDate : dayjs();
+  const hour24 = initialDate.hour();
+
+  return {
+    amPm: hour24 < 12 ? "오전" : "오후",
+    hour: hour24 % 12 || 12,
+    minute: initialDate.minute(),
+  };
+};
+
 const TimePicker = ({
   dateValue,
   setTime,
   minuteListStyle = "all",
   useRolling = false,
 }: HoursMinutesSelectProps) => {
-  const [selectedHourMinute, setSelectedHourMinute] = useState<{
-    amPm: string;
-    hour: number;
-    minute: number;
-  }>({
-    amPm: "",
-    hour: dayjs(dateValue).get("hour"),
-    minute: dayjs(dateValue).get("minute"),
-  });
+  const [selectedHourMinute, setSelectedHourMinute] =
+    useState<SelectedHourMinute>(() => getInitialTime(dateValue));
 
-  const amPm = [
+  const amPm: { en: string; ko: AmPm }[] = [
     { en: "AM", ko: "오전" },
     { en: "PM", ko: "오후" },
   ];
-  const hours = Array.from({ length: 12 }, (_, i) => i + 1);
+  const hours = Array.from({ length: 12 }, (_, i) => i + 1); // 12시간 생성
+  // 분 생성. all: 1분단위, half: 30분단위, ten: 10분단위
   let minutes: number[];
   switch (minuteListStyle) {
     case "all":
@@ -50,8 +65,8 @@ const TimePicker = ({
       break;
   }
 
-  const extendedHours = [...hours, ...hours, ...hours];
-  const extendedMinutes = [...minutes, ...minutes, ...minutes];
+  const extendedHours = [...hours, ...hours, ...hours]; // 무한 롤링용 시간 배열
+  const extendedMinutes = [...minutes, ...minutes, ...minutes]; // 무한 롤링용 분 배열
 
   const mappingMinutes = () => {
     if (useRolling && minuteListStyle !== "half") {
@@ -61,6 +76,7 @@ const TimePicker = ({
     }
   };
 
+  // 24시간제로 변경
   const changeHourTo24 = (): number => {
     if (selectedHourMinute.amPm === "오후" && selectedHourMinute.hour === 12) {
       return 12;
@@ -76,12 +92,16 @@ const TimePicker = ({
     }
   };
 
+  // 같은 목록을 세 번 이어 붙인 뒤 끝에 닿으면 같은 값이 있는 구간으로 옮겨 무한 스크롤처럼 보이게 한다.
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
     if (useRolling) {
       const { scrollTop, scrollHeight } = event.currentTarget;
+
       if (scrollTop === 0) {
+        // 맨 위에서는 가운데 목록으로 옮겨 위쪽으로 계속 스크롤할 여유를 만든다.
         event.currentTarget.scrollTop = scrollHeight / 3;
       } else if (scrollTop > (scrollHeight / 3) * 2) {
+        // 마지막 목록을 지나면 첫 목록으로 돌아가 롤링을 이어간다.
         event.currentTarget.scrollTop = 0;
       }
     }
@@ -93,10 +113,13 @@ const TimePicker = ({
     number: number,
     animation = "smooth",
   ) => {
+    // 롤링 목록에는 같은 시간이 여러 번 있으므로 값과 렌더링 순번으로 정확한 항목을 찾는다.
     const element = document.querySelector(
       `.TimeElement.${type}-${currentSelect}-${number}`,
     );
+
     if (element) {
+      // 선택한 항목이 시간 또는 분 목록의 가운데에 오도록 스크롤한다.
       element.scrollIntoView({
         behavior: animation as ScrollBehavior,
         block: "center",
@@ -105,22 +128,7 @@ const TimePicker = ({
   };
 
   useEffect(() => {
-    if (dateValue) {
-      setSelectedHourMinute({
-        amPm: dayjs(dateValue).format("A"),
-        hour:
-          dayjs(dateValue).get("hour") === 0
-            ? 12
-            : dayjs(dateValue).get("hour") > 12
-              ? dayjs(dateValue).get("hour") - 12
-              : dayjs(dateValue).get("hour"),
-        minute: dayjs(dateValue).get("minute"),
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
+    // 기존 날짜에 사용자가 선택한 시각을 반영하고 초는 0으로 맞춰 부모 컴포넌트에 전달한다.
     const selectTime = dayjs(dateValue)
       .set("hour", changeHourTo24())
       .set("minute", selectedHourMinute.minute)
@@ -133,8 +141,12 @@ const TimePicker = ({
   useEffect(() => {
     const hour = selectedHourMinute.hour;
     const minute = selectedHourMinute.minute;
+
+    // 세 묶음 중 가운데 묶음에 있는 선택값의 위치를 계산한다.
     const hIndex = extendedHours.length / 3 + hour - 1;
     const mIndex = extendedMinutes.length / 3 + minute;
+
+    // 처음 위치를 잡을 때 목록이 움직이는 모습이 보이지 않도록 애니메이션 없이 이동한다.
     adjustScroll("Hour", hour, hIndex, "instant");
     adjustScroll("Minute", minute, mIndex, "instant");
   }, [
@@ -172,7 +184,10 @@ const TimePicker = ({
                     : "hover:bg-gray-gray_10",
                 )}
                 onClick={() =>
-                  setSelectedHourMinute({ ...selectedHourMinute, amPm: a.ko })
+                  setSelectedHourMinute((currentTime) => ({
+                    ...currentTime,
+                    amPm: a.ko,
+                  }))
                 }
               >
                 {a.ko}

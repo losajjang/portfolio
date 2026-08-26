@@ -7,6 +7,7 @@ import ProjectDetail from "./ProjectDetail";
 import Calendar from "./Calendar";
 import Form from "./Form";
 import NavigationGuard from "./NavigationGuard";
+import TimeSelect from "./TimeSelect";
 
 export type CareerItemType = {
   id: number;
@@ -139,9 +140,18 @@ const Career = () => {
               detailTitle: "무한롤링 기능이 있는 시간 선택 컴포넌트 개발",
               description: "시간 선택의 편의성 향상",
               demo: {
-                label: "시연 추가 예정",
-                disabled: true,
-                modalContent: {},
+                label: "시간 선택 시연",
+                disabled: false,
+                modalContent: {
+                  id: "time-picker",
+                  title: "시간 선택 데모",
+                  description: "시간을 선택해주세요.",
+                  demoBody: (
+                    <div>
+                      <TimeSelect />
+                    </div>
+                  ),
+                },
               },
             },
           ]}
