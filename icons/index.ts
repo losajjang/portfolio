@@ -5,6 +5,7 @@ import bitbucketIcon from "./Bitbucket_logo.svg";
 import notionIcon from "./Notion_logo.svg";
 import figmaIcon from "./Figma_logo.svg";
 import slackIcon from "./Slack_logo.svg";
+import IcnLineCheckW16 from "./Icn_line_check_w_16.svg";
 
 export {
   javascriptIcon,
@@ -14,4 +15,5 @@ export {
   notionIcon,
   figmaIcon,
   slackIcon,
+  IcnLineCheckW16,
 };
