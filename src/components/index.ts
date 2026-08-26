@@ -22,6 +22,7 @@ import Step01 from "./Step01";
 import Step02 from "./Step02";
 import Step03 from "./Step03";
 import HelperText from "./HelperText";
+import NavigationGuard from "./NavigationGuard";
 
 export {
   Abilities,
@@ -48,4 +49,5 @@ export {
   Step02,
   Step03,
   HelperText,
+  NavigationGuard,
 };

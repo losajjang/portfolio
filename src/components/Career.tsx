@@ -6,6 +6,7 @@ import dayjs, { Dayjs } from "dayjs";
 import ProjectDetail from "./ProjectDetail";
 import Calendar from "./Calendar";
 import Form from "./Form";
+import NavigationGuard from "./NavigationGuard";
 
 export type CareerItemType = {
   id: number;
@@ -118,9 +119,20 @@ const Career = () => {
               description:
                 "절차를 완료하지 못한 사용자의 화면 이탈을 한 번더 확인시켜 운영팀으로의 문의 감소",
               demo: {
-                label: "시연 추가 예정",
-                disabled: true,
-                modalContent: {},
+                label: "네비게이션 가드 시연",
+                disabled: false,
+                closeOnBackdrop: false,
+                modalContent: {
+                  id: "navigation-guard",
+                  title: "네비게이션 가드 데모",
+                  description:
+                    "새로고침하거나 브라우저의 뒤로가기를 눌러 동작을 확인해보세요.",
+                  demoBody: (
+                    <div>
+                      <NavigationGuard />
+                    </div>
+                  ),
+                },
               },
             },
             {

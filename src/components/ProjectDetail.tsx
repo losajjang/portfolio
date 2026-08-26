@@ -17,6 +17,7 @@ type ProjectDetailProps = {
     demo?: {
       label?: string;
       disabled?: boolean;
+      closeOnBackdrop?: boolean;
       modalContent?: {
         id?: string;
         title?: string;
@@ -99,6 +100,7 @@ const ProjectDetail = ({ detail, urls }: ProjectDetailProps) => {
               description={
                 item.demo?.modalContent?.description || "데모 내용이 없습니다."
               }
+              closeOnBackdrop={item.demo?.closeOnBackdrop}
               footer={
                 <>
                   <Button
